@@ -8,12 +8,34 @@ export default class Header extends Component {
     userName:"刘聪",
     sysTime:"" //时间
   }
+  UNSAFE_componentWillMount(){
+    let {getWeatherApi}=this;
+    setInterval(() => {
+      let time= Utils.formatDate(new Date().getTime());
+      this.setState({sysTime:time})
+    }, 1000);
+    getWeatherApi();
+  }
   //获取天气api
-  getWeatherApi(){
-
+  getWeatherApi=()=>{
+    let city="北京";
+    axios1.jsonp({
+      url:`https://www.tianqiapi.com/api?version=v1&appid=21375891&appsecret=fTYv7v5E&city=${encodeURIComponent(city)}`
+    })
+    .then((res)=>{
+      if (res) {
+        let city = res.city;
+        let wea = res.data[0].wea;
+        console.log(this);
+        this.setState({
+          city,
+          wea
+        })
+      }
+    })
   }
   render() {
-    let {userName,sysTime}=this.state;
+    let {userName,sysTime,city,wea}=this.state;
     return <div className='header'>
       <Row className='header-top'>
         <Col span="24">
@@ -27,15 +49,10 @@ export default class Header extends Component {
         </Col>
         <Col span="20" className='weather'>
           <span className='date'>{sysTime}</span>
-          <span className='weather-detail'>多云转晴</span>
+          <span className='weather-detail'>{wea}</span>
         </Col>
       </Row>
     </div>;
   }
-  componentDidMount(){
-    setInterval(() => {
-      let time= Utils.formatDate(new Date().getTime());
-      this.setState({sysTime:time})
-    }, 1000);
-  }
+ 
 }

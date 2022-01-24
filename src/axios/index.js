@@ -4,9 +4,14 @@ export default class Axios {
        return new Promise((resolve,reject)=>{
             Jsonp(options.url,{
                 param:'callback'
-            },function(error,response){
-
+            },(err,response)=>{
+                if(response){
+                    resolve(response)
+                }else{
+                    reject(err.message);
+                }
             })
         })
     }
+
 }

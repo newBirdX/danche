@@ -4,6 +4,7 @@ import './style/common.less'
 import NavLeft from './components/navleft'
 import Header from './components/header'
 import Footer from './components/footer'
+import Home from './components/home';
 export default class Admin extends Component {
   render() {
     return <div>
@@ -14,7 +15,8 @@ export default class Admin extends Component {
         <Col span="21" className='main'>
           <Header/>
           <Row className='content'>
-            aa
+            {/* <Home/> */}
+            {this.props.children}
           </Row>
           <Footer/>
         </Col>

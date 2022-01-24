@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Menu,Icon } from 'antd'
-import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom' 
 import menuConfig from '../../config/menuConfig'
 import './index.less'
 const { SubMenu } = Menu;
@@ -19,7 +19,7 @@ export default class NavLeft extends Component {
                 )
             }else{
             return (
-                <Menu.Item title={item.title} key={item.key}>{item.title}</Menu.Item>
+                <Menu.Item title={item.title} key={item.key}><Link to={item.key}>{item.title}</Link></Menu.Item>
             )
         }
         })

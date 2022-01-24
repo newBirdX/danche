@@ -12,9 +12,21 @@
         height: 40px;
         line-height: 40px;
         padding: 0 20px;
-        border: 1px solid #000;
+        border-top: 1px solid #000;
+        background-color: #fff;
         .breadcrumb-title{
+            position: relative;
             text-align: center;
+            &:after{
+                position: absolute;
+                top: 39px;
+                left: 85px;
+                content: "";
+                border-top: 9px solid #fff;
+                border-left: 9px solid transparent;
+                border-right: 9px solid transparent;
+                border-bottom: 9px solid transparent;
+            }
         }
         .weather{
             text-align: right;

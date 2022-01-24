@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Admin from './admin'
+import Router from './router'
 ReactDOM.render(
-    <Admin />,
+    <Router />,
   document.getElementById('root')
 );
