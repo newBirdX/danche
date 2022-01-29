@@ -3,8 +3,15 @@ import { HashRouter as Routers,Route,Link ,Switch} from 'react-router-dom'
 import App from './App'
 import Login from './pages/login/login'
 import Admin from './admin'
-import Button from './pages/ui/button'
+import Buttons from './pages/ui/button'
+import Gallery from './pages/ui/gallery'
+import Modals from './pages/ui/modal'
+import Loadings from './pages/ui/loadings'
+import Notice from './pages/ui/notice'
+import Messages from './pages/ui/messages'
+import Tabs from './pages/ui/tabs'
 import NoMatch from './pages/nomatch'
+
 export default class Router extends Component {
     render() {
         return (
@@ -14,7 +21,13 @@ export default class Router extends Component {
                 <Route path="/admin" render={()=>{
                     return(
                         <Admin>
-                        <Route path="/admin/ui/buttons"  component={Button} />
+                        <Route path="/admin/ui/buttons"  component={Buttons} />
+                        <Route path="/admin/ui/gallery"  component={Gallery} />
+                        <Route path="/admin/ui/modals"  component={Modals} />
+                        <Route path="/admin/ui/loadings"  component={Loadings} />    
+                        <Route path="/admin/ui/notification"  component={Notice} />
+                        <Route path="/admin/ui/messages"  component={Messages} />
+                        <Route path="/admin/ui/tabs"  component={Tabs} />
                         <Route component={NoMatch} />
                     </Admin>
                     )

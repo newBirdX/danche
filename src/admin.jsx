@@ -9,15 +9,14 @@ export default class Admin extends Component {
   render() {
     return <div>
       <Row className='container'>
-        <Col span="3" className='nav-left'>
+        <Col span={3} className='nav-left'>
           <NavLeft />
         </Col>
-        <Col span="21" className='main'>
+        <Col span={21} className='main'>
           <Header/>
-          <Row className='content'>
-            {/* <Home/> */}
+          <div className='content'>
             {this.props.children}
-          </Row>
+          </div>
           <Footer/>
         </Col>
       </Row>

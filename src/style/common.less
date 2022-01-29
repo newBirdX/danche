@@ -8,6 +8,10 @@
     .main{
         background-color: @colorL;
         height: calc(100vh);
+        overflow: auto;
+        &::-webkit-scrollbar {
+            display: none; /* Chrome Safari */
+          }
     }
     .content{
         position: relative;
