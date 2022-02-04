@@ -10,6 +10,7 @@ import Loadings from './pages/ui/loadings'
 import Notice from './pages/ui/notice'
 import Messages from './pages/ui/messages'
 import Tabs from './pages/ui/tabs'
+import Carousel from './pages/ui/carousel'
 import NoMatch from './pages/nomatch'
 
 export default class Router extends Component {
@@ -28,6 +29,7 @@ export default class Router extends Component {
                         <Route path="/admin/ui/notification"  component={Notice} />
                         <Route path="/admin/ui/messages"  component={Messages} />
                         <Route path="/admin/ui/tabs"  component={Tabs} />
+                        <Route path="/admin/ui/carousel"  component={Carousel} />
                         <Route component={NoMatch} />
                     </Admin>
                     )
