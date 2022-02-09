@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Card, Table ,Modal,Button,message} from 'antd'
 import axios from "./../../axios"
+import Utils from './../../utils/utils';
 const data=[
     {
         id:"0",
@@ -38,27 +39,35 @@ export default class Basic extends Component {
         data:[], //静态数据
         data2:[]//动态表格数据
     }
+    params={
+        page:1
+    }
     //获取动态数据
     request=()=>{
+        let _this=this;
+        // console.log("this",_this)
        axios.ajax({
            url:"/table/list",
            data:{
                params:{
-                   page:1
+                   page:this.params.page
                }
            }
        }).then(res=>{
            if(res.code==="0"){
-               res.result.map((item,index)=>{
+               res.result.list.map((item,index)=>{
                    item.key=index;
                })
-               this.setState({data2:res.result})
+               this.setState({data2:res.result.list,
+                selectedRowKeys:[],
+                selectedIds:[] ,
+                pagination:Utils.pagination(res,(current)=>{
+                    this.params.page=current;
+                    this.request();
+                })
+            })
            }
        })
-       this.setState({
-        selectedRowKeys:[],
-        selectedIds:[] 
-    })
     }
     //点击选中行
     onRowClick=(record,index)=>{
@@ -183,6 +192,9 @@ export default class Basic extends Component {
                 };
               }}
             />
+        </Card>
+        <Card title="动态获取数据表格--分页">
+            <Table columns={columns} dataSource={data2} bordered={true} pagination={this.state.pagination}/>
         </Card>
     </div>;
   }
