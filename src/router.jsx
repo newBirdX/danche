@@ -15,6 +15,9 @@ import Login1 from './pages/form/login'
 import Register from './pages/form/register'
 import NoMatch from './pages/nomatch'
 import Basic from './pages/table/basic'
+import HeightTable from './pages/table/heighTable'
+import City from './pages/city'
+import Order from './pages/order'
 export default class Router extends Component {
     render() {
         return (
@@ -35,6 +38,9 @@ export default class Router extends Component {
                         <Route path="/admin/form/login"  component={Login1} />
                         <Route path="/admin/form/reg"  component={Register} />
                         <Route path="/admin/table/basic"  component={Basic} />
+                        <Route path="/admin/table/high"  component={HeightTable} />
+                        <Route path="/admin/city"  component={City} />
+                        <Route path="/admin/order"  component={Order} />
                         <Route component={NoMatch} />
                     </Admin>
                     )
