@@ -1,5 +1,8 @@
 @import './default.less';
 @import './loading.less';
+ul,li{
+    list-style-type: none;
+}
 .container{
     display:flex;
     .nav-left{
@@ -19,6 +22,15 @@
         padding: 20px;
     }
 }
+//清除浮动通用样式
+.clearfix{
+    &::after{
+        content: "";
+        clear: both;
+        display: block;
+        visibility: hidden;
+    }
+}
 //通用表格样式
 .content-wrap{
     border: 1px solid #e8e8e8;
@@ -26,5 +38,12 @@
     .ant-table-wrapper{
         margin-left: -1px;
         margin-right: -10px;
+    }
+}
+//common订单详情页面
+.simple-page{
+    .header-top{
+      background:#1890ff;
+      color:@colorM;
     }
 }

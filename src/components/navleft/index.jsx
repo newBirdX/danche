@@ -26,7 +26,7 @@ export default class NavLeft extends Component {
     }
     render() {
         return (
-            <div>
+            <div className='nav-left'>
                 <div className='logo'>
                     <img src="/assets/logo-ant.svg" alt="" />
                     <h1>单车</h1>

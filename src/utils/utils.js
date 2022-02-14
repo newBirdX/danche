@@ -1,3 +1,6 @@
+import React from "react";
+import { Select } from "antd";
+let {Option}=Select
 //公共插件
 export default {
     //显示时间
@@ -20,5 +23,16 @@ export default {
         },
         // showQuickJumper:true
         }
+    },
+
+    getOptions(data){
+        if(!data){
+            return [];
+        }
+        let options=[];
+        data.map(item=>{
+            options.push(<Option value={item.id} key={item.id}>{item.name}</Option>)
+        })
+        return options;
     }
 }
