@@ -7,8 +7,8 @@ const data=[
         id:"0",
         name:"lc",
         sex:"男",
-        state:"Study",
-        interest:"篮球",
+        state:"1",
+        interest:"3",
         birthday:"2000-01-01",
         address:"秦皇岛",
         time:"09:00"
@@ -17,8 +17,8 @@ const data=[
         id:"1",
         name:"jarry",
         sex:"男",
-        state:"Study",
-        interest:"篮球",
+        state:"2",
+        interest:"2",
         birthday:"2000-01-01",
         address:"秦皇岛",
         time:"09:00"
@@ -27,8 +27,8 @@ const data=[
         id:"2",
         name:"xiaogang",
         sex:"男",
-        state:"Study",
-        interest:"篮球",
+        state:"3",
+        interest:"3",
         birthday:"2000-01-01",
         address:"秦皇岛",
         time:"09:00"

@@ -3,6 +3,8 @@ import { Card ,Form,Button,Select,Table,DatePicker,Modal,message} from 'antd'
 import './../../style/common.less'
 import axios from './../../axios'
 import BaseForm from './../../components/baseForm'
+import Etable from './../../components/Etable'
+import Utils from '../../utils/utils'
 const FormItem=Form.Item
 const Option=Select.Option
 export default class Order extends Component {
@@ -104,18 +106,18 @@ export default class Order extends Component {
         })
     }
     //点击选中行
-    onRowClick=(record,index)=>{
-        let selectKey=[index];
-        this.setState({
-            selectedRowKeys:selectKey,
-            selectedItem:record 
-        })
-        // console.log(record)
-        Modal.info({
-            title:"信息",
-            content:`用户名:${record.user_name}`
-        })
-    }
+    // onRowClick=(record,index)=>{
+    //     let selectKey=[index];
+    //     this.setState({
+    //         selectedRowKeys:selectKey,
+    //         selectedItem:record 
+    //     })
+    //     // console.log(record)
+    //     Modal.info({
+    //         title:"信息",
+    //         content:`用户名:${record.user_name}`
+    //     })
+    // }
     //打开详情页
     openOrderDetail=()=>{
         let item =this.state.selectedItem;
@@ -192,13 +194,18 @@ export default class Order extends Component {
               <Button type="primary" onClick={this.handdleConfirm}>结束订单</Button>
           </Card>
           <div className="content-wrap">
-              <Table columns={columns} rowSelection={{type:"radio",selectedRowKeys}}  onRow={(record,index) => {
+              <Etable columns={columns} dataSource={list} pagination={this.state.pagination} selectedRowKeys={selectedRowKeys} 
+                updateSelectedItem={Utils.updateSelectedItem.bind(this)}
+                rowSelection={"checkbox"}
+                selectedIds={this.state.selectedIds}
+              />
+              {/* <Table columns={columns} rowSelection={{type:"radio",selectedRowKeys}}  onRow={(record,index) => {
                 return {
                   onClick: () => {
                       this.onRowClick(record,index);
                   }, // 点击行
                 };
-              }} dataSource={list}/>
+              }} dataSource={list}/> */}
           </div>
           <Modal title="结束订单" visible={orderConfirmVisible}  onOk={this.handdleFinish} onCancel={()=>{
               this.setState({
