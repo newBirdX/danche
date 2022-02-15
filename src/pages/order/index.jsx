@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Card ,Form,Button,Select,Table,DatePicker,Modal,message} from 'antd'
 import './../../style/common.less'
 import axios from './../../axios'
+import BaseForm from './../../components/baseForm'
 const FormItem=Form.Item
 const Option=Select.Option
 export default class Order extends Component {
@@ -20,8 +21,8 @@ export default class Order extends Component {
             lable:"城市",
             field:"city",
             placeholder:"全部",
-            initialValue:"1",
-            width:100,
+            initialValue:"0",
+            width:80,
             list:[{id:"0",name:"全部"},{id:"1",name:"北京"},{id:"2",name:"天津"},{id:"3",name:"深圳"}]
         },
         {
@@ -32,30 +33,32 @@ export default class Order extends Component {
             lable:"订单状态",
             field:"order_status",
             placeholder:"全部",
-            initialValue:"1",
-            width:100,
+            initialValue:"0",
+            width:80,
             list:[{id:"0",name:"全部"},{id:"1",name:"进行中"},{id:"2",name:"结束行程"}]
         }
 
     ]
     //发送表单数据请求
     requestList=()=>{
-        axios.ajax({
-            url:"/order/list",
-            data:{
-                params:this.params.page
-            }
-        }).then(res=>{
-            if(res.code==="0"){
-                let list=res.result.item_list.map((item,index)=>{
-                    item.key=index;
-                    return item;
-                })
-                this.setState({
-                    list,
-                })
-            }
-        })
+        let _this=this;
+        axios.requestList(_this,"/order/list",this.params);
+        // axios.ajax({
+        //     url:"/order/list",
+        //     data:{
+        //         params:this.params
+        //     }
+        // }).then(res=>{
+        //     if(res.code==="0"){
+        //         let list=res.result.item_list.map((item,index)=>{
+        //             item.key=index;
+        //             return item;
+        //         })
+        //         this.setState({
+        //             list,
+        //         })
+        //     }
+        // })
     }
        //点击结束订单
        handdleConfirm=()=>{
@@ -125,6 +128,11 @@ export default class Order extends Component {
         }
         window.open(`#/common/order/detail/${item.id}`);
     }
+    //封装表单传递提交方法
+    handdleFilter=(params)=>{
+        this.params=params;
+        this.requestList();
+    }
   render() {
       let {list,orderConfirmVisible,orderInfo,selectedRowKeys}=this.state;
       const columns=[
@@ -178,7 +186,7 @@ export default class Order extends Component {
       ]
     return (
       <div>
-          <Card title="订单管理"><FilterForm></FilterForm></Card>
+          <Card title="订单管理"><BaseForm formList={this.formlist} filterSubmit={this.handdleFilter}/></Card>
           <Card style={{marginTop:"10px"}}>
               <Button style={{marginRight:"20px"}} type="primary" onClick={this.openOrderDetail}>订单详情</Button>
               <Button type="primary" onClick={this.handdleConfirm}>结束订单</Button>
@@ -219,6 +227,7 @@ export default class Order extends Component {
       this.requestList();
   }
 }
+//单独的form表单,因为封装好工程化form了，所以不需要用这个了
 class FilterForm extends Component{
     render(){
         return (

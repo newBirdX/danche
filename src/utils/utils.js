@@ -24,13 +24,13 @@ export default {
         // showQuickJumper:true
         }
     },
-
+    //表单封装中用来遍历返回每一项select的option，以数组形式返回，通过jsx模板语法进行数组遍历
     getOptions(data){
         if(!data){
             return [];
         }
         let options=[];
-        data.map(item=>{
+        data.map((item)=>{
             options.push(<Option value={item.id} key={item.id}>{item.name}</Option>)
         })
         return options;
