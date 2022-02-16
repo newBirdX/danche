@@ -4,16 +4,14 @@ import Utils from "./../../utils/utils"
 export default class Etable extends Component {
     //点击行
     onRowClick=(record,index)=>{
-        let rowSelection=this.props.rowSelection;
+        let {selectedRowKeys,selectedItem,selectedIds,rowSelection}=this.props;
         if(rowSelection==="checkbox"){
-            let selectedRowKeys=this.props.selectedRowKeys;
-            let selectedItem=this.props.selectedItem;
-            let selectedIds=this.props.selectedIds;
             if(selectedIds){
                 const i=selectedIds.indexOf(record.id);
                 if(i===-1){
                     selectedIds.push(record.id);
                     selectedRowKeys.push(index);
+                    console.log(selectedIds,selectedRowKeys,selectedItem);
                     selectedItem.push(record);
                 }else{
                     selectedIds.splice(i,1);
@@ -23,7 +21,7 @@ export default class Etable extends Component {
             }else{
                 selectedIds=[record.id];
                 selectedRowKeys=[index];
-                selectedItem=[record]
+                selectedItem=[record];
             }
             this.props.updateSelectedItem(selectedRowKeys,selectedItem,selectedIds)
         }else{

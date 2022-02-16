@@ -186,6 +186,7 @@ export default class Order extends Component {
             dataIndex:"user_pay"
         }
       ]
+      console.log("this.state",this.state);
     return (
       <div>
           <Card title="订单管理"><BaseForm formList={this.formlist} filterSubmit={this.handdleFilter}/></Card>
@@ -194,7 +195,7 @@ export default class Order extends Component {
               <Button type="primary" onClick={this.handdleConfirm}>结束订单</Button>
           </Card>
           <div className="content-wrap">
-              <Etable columns={columns} dataSource={list} pagination={this.state.pagination} selectedRowKeys={selectedRowKeys} 
+              <Etable columns={columns} dataSource={list} pagination={this.state.pagination} selectedItem={this.state.selectedItem} selectedRowKeys={selectedRowKeys} 
                 updateSelectedItem={Utils.updateSelectedItem.bind(this)}
                 rowSelection={"checkbox"}
                 selectedIds={this.state.selectedIds}

@@ -21,10 +21,10 @@ export default class FilterForm extends Component {
         const formList = this.props.formList;
         if (formList && formList.length > 0) {
             formList.map((item) => {
-                let { lable, field, placeholder, initialValue, width, type, list } = item;
+                let { label, field, placeholder, initialValue, width, type, list } = item;
                 //下拉框
                 if (type === "SELECT") {
-                    const SELECT = <FormItem lable={lable} name={field} key={field} initialValue={initialValue}>
+                    const SELECT = <FormItem label={label} name={field} key={field} initialValue={initialValue}>
                         <Select placeholder={placeholder} style={{ width: width }}>
                             {Utils.getOptions(list)}
                         </Select>
@@ -32,21 +32,21 @@ export default class FilterForm extends Component {
                     fromItemList.push(SELECT);
                     //输入框
                 } else if (type === "INPUT") {
-                    const INPUT = <FormItem lable={lable} name={field} key={field} initialValue={initialValue}>
+                    const INPUT = <FormItem label={label} name={field} key={field} initialValue={initialValue}>
                         <Input type="text" placeholder={placeholder} style={{ width: width }} />
                     </FormItem>
                     fromItemList.push(INPUT);
                     //复选框
                 } else if (type === "CHECKBOX") {
-                    const CHECKBOX = <FormItem lable={lable} name={field} valuePropName="checked" initialValue={initialValue}>
+                    const CHECKBOX = <FormItem label={label} name={field} valuePropName="checked" initialValue={initialValue}>
                         <Checkbox>
-                            {lable}
+                            {label}
                         </Checkbox>
                     </FormItem>
                     fromItemList.push(CHECKBOX)
                     //日期控件
                 } else if (type === "DATE") {
-                    const DATE = <FormItem lable={lable} key={field}>
+                    const DATE = <FormItem label={label} key={field}>
                         <DatePicker format='YYYY-MM-DD HH:mm:ss' placeholder="请选择结束时间" style={{ width: width }} />
                     </FormItem>
                     fromItemList.push(DATE)

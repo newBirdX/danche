@@ -18,6 +18,7 @@ import Basic from './pages/table/basic'
 import HeightTable from './pages/table/heighTable'
 import City from './pages/city'
 import Order from './pages/order'
+import User from './pages/user'
 //common页面
 import Common from './common'
 import Detail from './pages/order/detail'
@@ -44,6 +45,7 @@ export default class Router extends Component {
                         <Route path="/admin/table/high"  component={HeightTable} />
                         <Route path="/admin/city"  component={City} />
                         <Route path="/admin/order"  component={Order} />
+                        <Route path="/admin/user"  component={User} />
                         <Route component={NoMatch} />
                     </Admin>
                     )

@@ -26,7 +26,7 @@ export default class Header extends Component {
       if (res) {
         let city = res.city;
         let wea = res.data[0].wea;
-        console.log(this);
+        // console.log(this);
         this.setState({
           city,
           wea
