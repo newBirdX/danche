@@ -60,6 +60,13 @@ export default class FilterForm extends Component {
                         <DatePicker format='YYYY-MM-DD HH:mm:ss' placeholder='选择结束时间' style={{ width: width }} />
                     </Form.Item>
                     fromItemList.push(end_time)
+                }else if(type==="城市"){
+                    const CITY = <FormItem label="城市" name="city" key="city" initialValue={0}>
+                        <Select placeholder={placeholder} style={{ width: 80 }}>
+                            {Utils.getOptions([{id:0,name:"全部"},{id:1,name:"北京"},{id:2,name:"杭州"},{id:3,name:"上海"}])}
+                        </Select>
+                    </FormItem>
+                    fromItemList.push(CITY);
                 }
 
             })

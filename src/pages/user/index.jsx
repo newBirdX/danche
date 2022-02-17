@@ -100,6 +100,7 @@ export default class User extends Component {
             }
             Modal.confirm({
                 title:"确认删除",
+                content:"是否要删除当前员工",
                 cancelText:"取消",
                 okText:"确认",
                 onOk:()=>{
