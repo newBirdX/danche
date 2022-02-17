@@ -90,6 +90,35 @@ export default class User extends Component {
                 title: "员工详情",
                 userInfo: item
             })
+        }else if(type==="delete"){
+            if(!item){
+                Modal.info({
+                    title:"提示",
+                    content:"请选择一个用户"
+                })
+                return ;
+            }
+            Modal.confirm({
+                title:"确认删除",
+                cancelText:"取消",
+                okText:"确认",
+                onOk:()=>{
+                    axios.ajax({
+                        url:"/user/delete",
+                        data:{
+                            params:item.id
+                        }
+                    }).then(res=>{
+                        if(res.code==="0"){
+                            this.setState({
+                                isVisible:false
+                            })
+                            message.success(res.msg);
+                            this.requestList();
+                        }
+                    })
+                }
+            })
         }
     }
     //点击添加员工模态框ok按钮
