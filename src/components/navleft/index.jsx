@@ -41,7 +41,6 @@ export default class NavLeft extends Component {
     }
     componentWillMount(){
         const menuTreeNode=this.renderMenu(menuConfig);
-        console.log(menuTreeNode);
         this.setState({menuTreeNode});
     }
 }
