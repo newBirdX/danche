@@ -35,7 +35,7 @@ export default class Router extends Component {
             <Routers>
                 <App>
                 <Switch>
-                <Route path="/login" component={Login}/>
+                {/* <Route path="/login" component={Login}/> */}
                 <Route path="/common" render={()=>{
                     return (
                         <Common>
